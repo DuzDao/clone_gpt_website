@@ -1,7 +1,7 @@
 "use client";
 
 import Form from "next/form";
-import { signUp } from "@/lib/actions";
+import { signUp } from "@/app/lib/actions";
 
 export default function Signup() {
   return (
@@ -13,6 +13,10 @@ export default function Signup() {
         <input type="password" name="password" placeholder="Password" />
         <button type="submit">Submit</button>
       </Form>
+      <h1>Already have an account?</h1>
+      <button>
+        <a href="/auth/login">Log In</a>
+      </button>
     </div>
   );
 }
