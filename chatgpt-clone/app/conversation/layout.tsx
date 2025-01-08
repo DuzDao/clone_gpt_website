@@ -1,3 +1,5 @@
+import HistoryConversationModal from "../components/Conversation/HistoryConversationModal";
+
 export default function ConversationLayout({
   children,
 }: Readonly<{
@@ -7,6 +9,7 @@ export default function ConversationLayout({
     <div>
       <div className="conversation-header">
         <button>O/C</button>
+        <HistoryConversationModal />
         <button>Select models</button>
         <button>New chat</button>
       </div>
