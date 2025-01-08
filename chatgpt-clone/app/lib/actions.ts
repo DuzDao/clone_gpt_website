@@ -19,7 +19,7 @@ async function signUp(formData: any) {
 }
 
 async function logIn(formData: any) {
-  await fetch(process.env.URL + "/api/auth/login", {
+  const res = await fetch(process.env.URL + "/api/auth/login", {
     method: "POST",
     headers: {
       "Content-Type": "application/json"
@@ -29,6 +29,27 @@ async function logIn(formData: any) {
       "password": formData.get("password")
     })
   })
+  
+  if (res.ok) {
+    redirect("/conversation");
+  } 
 }
 
-export {signUp, logIn}
+async function createNewConversation(formData: any) {
+  const res = await fetch(process.env.URL + "/api/conversation", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify({
+      "title": formData.get("title")
+    })
+  })
+  const result = await res.json();
+  if (res.ok) {
+    console.log("ok");
+    redirect(`/conversation/${result.conversation.id}`);
+  }
+}
+
+export {signUp, logIn, createNewConversation}
