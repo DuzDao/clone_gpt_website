@@ -1,33 +1,36 @@
+"use client";
+
 import HistoryConversationModal from "../components/Conversation/HistoryConversationModal";
+import Image from "next/image";
+import sidebarToogle from "@/public/sidebarToogle.svg";
+import { useState } from "react";
 
 export default function ConversationLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  //State for sidebar open
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+  const toogleSidebar = () => {
+    setIsSidebarOpen(!isSidebarOpen);
+  };
+
   return (
     <div className="flex flex-col h-screen w-screen">
       {/* Header */}
-      <div className="conversation-header mt-4 ms-3 me-3 flex justify-between">
-        <button>
-          <svg
-            width="24"
-            height="24"
-            viewBox="0 0 24 24"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-            className="icon-lg mx-2 text-token-text-secondary"
-          >
-            <path
-              fill-rule="evenodd"
-              clip-rule="evenodd"
-              d="M3 8C3 7.44772 3.44772 7 4 7H20C20.5523 7 21 7.44772 21 8C21 8.55228 20.5523 9 20 9H4C3.44772 9 3 8.55228 3 8ZM3 16C3 15.4477 3.44772 15 4 15H14C14.5523 15 15 15.4477 15 16C15 16.5523 14.5523 17 14 17H4C3.44772 17 3 16.5523 3 16Z"
-              fill="currentColor"
-            ></path>
-          </svg>
+      <div className="conversation-header mt-2 ms-3 me-3 flex justify-between relative">
+        <button
+          onClick={toogleSidebar}
+          className="px-2 py-1.5 rounded hover:bg-slate-200"
+        >
+          <Image src={sidebarToogle} alt="" />
         </button>
-        <HistoryConversationModal />
-        <button className="flex flex-row gap-2 items-center">
+        <HistoryConversationModal
+          isSidebarOpen={isSidebarOpen}
+          toogleSidebar={toogleSidebar}
+        />
+        <button className="flex flex-row gap-2 items-center px-2 py-1.5 rounded hover:bg-slate-200">
           <p className="text-lg">ChatGPT</p>
           <svg
             width="18"
@@ -45,7 +48,7 @@ export default function ConversationLayout({
             ></path>
           </svg>
         </button>
-        <button>
+        <button className="px-2 py-1.5 rounded hover:bg-slate-200">
           <svg
             width="24"
             height="24"
