@@ -3,12 +3,17 @@ import Form from "next/form";
 
 const CanDoItem = ({ createNewConversation, title }: any) => {
   return (
-    <>
-      <Form action={createNewConversation}>
+    <li className="inline">
+      <Form className="inline" action={createNewConversation}>
         <input type="hidden" name="title" value={title} />
-        <button type="submit">{title}</button>
+        <button
+          type="submit"
+          className="outline hover:bg-slate-100 outline-1 outline-slate-400 rounded-3xl p-2"
+        >
+          {title}
+        </button>
       </Form>
-    </>
+    </li>
   );
 };
 
