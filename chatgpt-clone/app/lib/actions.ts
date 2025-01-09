@@ -52,4 +52,15 @@ async function createNewConversation(formData: any) {
   }
 }
 
-export {signUp, logIn, createNewConversation}
+async function getConversations() {
+  const res = await fetch(process.env.URL + "/api/user", {
+    cache: 'force-cache'
+  })
+
+  const result = await res.json();
+  if (res.ok) {
+    return result
+  }
+}
+
+export {signUp, logIn, createNewConversation, getConversations}

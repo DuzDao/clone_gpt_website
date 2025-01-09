@@ -3,7 +3,8 @@
 import HistoryConversationModal from "../components/Conversation/HistoryConversationModal";
 import Image from "next/image";
 import sidebarToogle from "@/public/sidebarToogle.svg";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { getConversations } from "@/app/lib/actions";
 
 export default function ConversationLayout({
   children,
@@ -12,9 +13,20 @@ export default function ConversationLayout({
 }>) {
   //State for sidebar open
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+  //State for load conversations
+  const [conversations, setConversations] = useState<any[]>([]);
+
   const toogleSidebar = () => {
     setIsSidebarOpen(!isSidebarOpen);
   };
+  // use effect to load conversations only one time
+  useEffect(() => {
+    const fetchData = async () => {
+      const data = await getConversations();
+      setConversations(data.message);
+    };
+    fetchData();
+  }, []);
 
   return (
     <div className="flex flex-col h-screen w-screen">
@@ -29,6 +41,7 @@ export default function ConversationLayout({
         <HistoryConversationModal
           isSidebarOpen={isSidebarOpen}
           toogleSidebar={toogleSidebar}
+          conversations={conversations}
         />
         <button className="flex flex-row gap-2 items-center px-2 py-1.5 rounded hover:bg-slate-200">
           <p className="text-lg">ChatGPT</p>
