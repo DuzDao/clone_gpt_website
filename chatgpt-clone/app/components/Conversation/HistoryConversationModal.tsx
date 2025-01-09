@@ -1,4 +1,5 @@
-import React from "react";
+"use client";
+
 import sidebarToogle from "@/public/sidebarToogle.svg";
 import sidebarSearch from "@/public/sidebarSearch.svg";
 import sidebarNewchat from "@/public/sidebarNewchat.svg";
@@ -7,13 +8,19 @@ import sidebarExplore from "@/public/sidebarExplore.svg";
 import sidebarUpgrade from "@/public/sidebarUpgrade.svg";
 import userIcon from "@/public/userIcon.svg";
 import Image from "next/image";
+import ConversationItemButton from "./ConversationItemButton";
 
 interface Props {
   isSidebarOpen: boolean;
   toogleSidebar: () => void;
+  conversations: any[];
 }
 
-const HistoryConversationModal = ({ isSidebarOpen, toogleSidebar }: Props) => {
+const HistoryConversationModal = ({
+  isSidebarOpen,
+  toogleSidebar,
+  conversations,
+}: Props) => {
   if (!isSidebarOpen) {
     return <></>;
   }
@@ -38,7 +45,7 @@ const HistoryConversationModal = ({ isSidebarOpen, toogleSidebar }: Props) => {
         </div>
       </div>
       {/* Modal Body */}
-      <div className="modal-body mt-5 flex flex-col items-start flex-grow">
+      <div className="modal-body mt-5 flex flex-col items-start flex-grow overflow-auto">
         <button className="flex w-full gap-3 hover:bg-slate-200 rounded-xl px-3 py-2">
           <div className="outline outline-1 rounded-full p-0.5 outline-slate-300 bg-white">
             <Image src={chatgptIcon} alt="" className="h-5 w-5"></Image>
@@ -53,6 +60,15 @@ const HistoryConversationModal = ({ isSidebarOpen, toogleSidebar }: Props) => {
         </button>
 
         {/* Danh sách button các conversation */}
+        <ul className="mt-4">
+          {conversations.map((conversation) => {
+            return (
+              <li>
+                <ConversationItemButton title={conversation.title} />
+              </li>
+            );
+          })}
+        </ul>
       </div>
       {/* Modal Footer */}
       <div className="modal-footer">
