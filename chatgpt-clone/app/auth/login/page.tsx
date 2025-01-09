@@ -2,20 +2,31 @@
 
 import Form from "next/form";
 import { logIn } from "@/app/lib/actions";
+import AuthInput from "@/app/components/UI/AuthInput";
 
 export default function Signup() {
   return (
-    <div>
-      <h1>This is login page</h1>
-      <Form action={logIn}>
-        <input type="text" placeholder="Email" name="email" />
-        <input type="password" placeholder="Password" name="password" />
-        <button type="submit">Submit</button>
+    <div className="pt-5">
+      <h1 className="font-bold text-3xl text-center">Welcome back</h1>
+      <Form action={logIn} className="flex flex-col gap-5 pt-12">
+        <AuthInput type="text" name="email" placeholder="Email address*" />
+        <AuthInput type="password" name="password" placeholder="Password" />
+
+        <button
+          type="submit"
+          className="chatgpt-branch-bg-green text-white px-5 rounded py-3 hover:brightness-90 text-base mt-2"
+        >
+          Continue
+        </button>
       </Form>
-      <h1>Don't have an account?</h1>
-      <button>
-        <a href="/auth/signup">Sign Up</a>
-      </button>
+      <div className="flex flex-row justify-center gap-2 pt-2">
+        <h1>Don't have an account?</h1>
+        <button>
+          <a className="chatgpt-branch-green" href="/auth/signup">
+            Sign Up
+          </a>
+        </button>
+      </div>
     </div>
   );
 }
