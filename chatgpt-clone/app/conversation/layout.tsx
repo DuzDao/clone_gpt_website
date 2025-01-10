@@ -76,7 +76,7 @@ export default function ConversationLayout({
         </button>
       </div>
       {/* Body */}
-      <div className="conversation-body flex-grow flex items-center justify-center">
+      <div className="conversation-body my-3 flex-grow flex items-end overflow-auto">
         {children}
       </div>
       {/* Footer */}

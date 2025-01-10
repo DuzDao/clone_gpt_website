@@ -1,6 +1,8 @@
 "use client";
 import { getMessages } from "@/app/lib/actions";
 import { useEffect, useState } from "react";
+import UserMessage from "@/app/components/Message/UserMessage";
+import ModelMessage from "@/app/components/Message/ModelMessage";
 
 export default function Conversation({
   params,
@@ -17,14 +19,16 @@ export default function Conversation({
   }, []);
 
   return (
-    <>
-      <ul>
-        {messages.map((message) => (
-          <li>
-            <p>{message.content}</p>
-          </li>
-        ))}
+    <div className="main-chat-zone w-full h-full">
+      <ul className="mx-4 flex flex-col gap-5">
+        {messages.map((message) =>
+          message.sender === "model" ? (
+            <ModelMessage message={message} />
+          ) : (
+            <UserMessage message={message} />
+          )
+        )}
       </ul>
-    </>
+    </div>
   );
 }
