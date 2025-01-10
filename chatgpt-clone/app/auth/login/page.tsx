@@ -20,7 +20,7 @@ export default function Signup() {
         </button>
       </Form>
       <div className="flex flex-row justify-center gap-2 pt-2">
-        <h1>Don't have an account?</h1>
+        <h1>Do not have an account?</h1>
         <button>
           <a className="chatgpt-branch-green" href="/auth/signup">
             Sign Up
