@@ -55,7 +55,7 @@ async function createNewConversation(formData: any) {
 
 async function getConversations() {
   const res = await fetch(process.env.URL + "/api/user", {
-    cache: 'force-cache'
+    method:"GET",
   })
 
   const result = await res.json();

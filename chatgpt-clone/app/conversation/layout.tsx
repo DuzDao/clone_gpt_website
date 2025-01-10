@@ -11,9 +11,7 @@ export default function ConversationLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  //State for sidebar open
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
-  //State for load conversations
   const [conversations, setConversations] = useState<any[]>([]);
 
   const toogleSidebar = () => {
