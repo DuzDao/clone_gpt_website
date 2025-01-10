@@ -1,6 +1,7 @@
 'use server';
 import { redirect } from "next/navigation";
 import { NextResponse } from "next/server";
+import { revalidatePath } from "next/cache";
 
 async function signUp(formData: any) {
   const res = await fetch(process.env.URL + "/api/auth/signup", {
@@ -70,4 +71,20 @@ async function getMessages(conversationId: string) {
   return result;
 }
 
-export {signUp, logIn, createNewConversation, getConversations, getMessages}
+async function addNewUserMessage(textInput: string) {
+  const conversationId = "cm5nmugz70001hdg8qw81xzel" //For test purpose
+  const res = await fetch(process.env.URL + `/api/conversation/[${conversationId}]/userInput`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify({
+      textInput: textInput
+    })
+  })
+  if (res.ok) {
+    revalidatePath(`/conversation/${conversationId}`);
+  }
+}
+
+export {signUp, logIn, createNewConversation, getConversations, getMessages, addNewUserMessage}
