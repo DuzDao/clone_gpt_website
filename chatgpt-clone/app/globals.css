@@ -6,6 +6,7 @@
   --chatgpt-branch-green: #00a67e;
   --chatgpt-branch-arsenic: #3c3c50;
   --chatgpt-branch-black: #141414;
+  --chatgpt-branch-gray: #e0e0e0;
 }
 
 /* Colors */
@@ -13,8 +14,16 @@
   color: var(--chatgpt-branch-green);
 }
 
+.chatgpt-branch-bg-gray {
+  background: var(--chatgpt-branch-gray);
+}
+
 .chatgpt-branch-bg-green {
   background: var(--chatgpt-branch-green);
+}
+
+.chatgpt-branch-arsenic {
+  color: var(--chatgpt-branch-arsenic);
 }
 
 /* Animation */
@@ -43,14 +52,13 @@
   transition: all 0.5 ease;
 }
 
-.auth-input-field:focus + .auth-input-placeholder, .auth-input-field:not(:placeholder-shown) + .auth-input-placeholder{
+.auth-input-field:focus + .auth-input-placeholder,
+.auth-input-field:not(:placeholder-shown) + .auth-input-placeholder {
   transform: translateY(-50%);
-  top:0;
+  top: 0;
   left: 15px;
   color: var(--chatgpt-branch-green);
   background: white;
-  padding-left:5px;
+  padding-left: 5px;
   padding-right: 5px;
 }
-
-
