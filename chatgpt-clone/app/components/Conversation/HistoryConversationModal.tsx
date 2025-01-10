@@ -10,10 +10,15 @@ import userIcon from "@/public/userIcon.svg";
 import Image from "next/image";
 import ConversationItemButton from "./ConversationItemButton";
 
+interface Conversation {
+  id: string;
+  title: string;
+}
+
 interface Props {
   isSidebarOpen: boolean;
   toogleSidebar: () => void;
-  conversations: any[];
+  conversations: Conversation[];
 }
 
 const HistoryConversationModal = ({

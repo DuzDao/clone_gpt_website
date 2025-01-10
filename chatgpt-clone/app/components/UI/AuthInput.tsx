@@ -1,6 +1,12 @@
 import React from "react";
 
-const AuthInput = ({ type, name, placeholder }: any) => {
+interface Props {
+  type: string;
+  name: string;
+  placeholder: string;
+}
+
+const AuthInput = ({ type, name, placeholder }: Props) => {
   return (
     <div className="relative">
       <input

@@ -1,7 +1,12 @@
 import React from "react";
 import Form from "next/form";
 
-const CanDoItem = ({ createNewConversation, title }: any) => {
+interface Props {
+  createNewConversation: () => void;
+  title: string;
+}
+
+const CanDoItem = ({ createNewConversation, title }: Props) => {
   return (
     <li className="inline">
       <Form className="inline" action={createNewConversation}>

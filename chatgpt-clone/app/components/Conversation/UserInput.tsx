@@ -1,4 +1,4 @@
-import React from "react";
+import React, { ChangeEvent } from "react";
 import attachIcon from "@/public/attachIcon.svg";
 import searchWebIcon from "@/public/searchWebIcon.svg";
 import userInputSubmit from "@/public/userInputSubmit.svg";
@@ -8,7 +8,7 @@ import { useState } from "react";
 
 const UserInput = () => {
   const [userTextInput, setUserTextInput] = useState("");
-  const handleGetTextInput = (event: any) => {
+  const handleGetTextInput = (event: ChangeEvent<HTMLInputElement>) => {
     setUserTextInput(event.target.value);
   };
 
