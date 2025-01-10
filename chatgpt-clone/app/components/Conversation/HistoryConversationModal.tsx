@@ -64,7 +64,10 @@ const HistoryConversationModal = ({
           {conversations.map((conversation) => {
             return (
               <li>
-                <ConversationItemButton title={conversation.title} />
+                <ConversationItemButton
+                  title={conversation.title}
+                  conversationId={conversation.id}
+                />
               </li>
             );
           })}
