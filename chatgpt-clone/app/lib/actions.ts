@@ -1,5 +1,6 @@
 'use server';
 import { redirect } from "next/navigation";
+import { NextResponse } from "next/server";
 
 async function signUp(formData: any) {
   const res = await fetch(process.env.URL + "/api/auth/signup", {
@@ -63,4 +64,10 @@ async function getConversations() {
   }
 }
 
-export {signUp, logIn, createNewConversation, getConversations}
+async function getMessages(conversationId: string) {
+  const res = await fetch(process.env.URL + `/api/conversation/[${conversationId}]`, {method: "GET"})
+  const result = await res.json();
+  return result;
+}
+
+export {signUp, logIn, createNewConversation, getConversations, getMessages}

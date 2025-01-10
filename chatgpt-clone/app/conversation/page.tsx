@@ -24,6 +24,10 @@ export default function Conversation() {
               createNewConversation={createNewConversation}
               title="Create new Document With A Super Smart AI"
             />
+            <CanDoItem
+              createNewConversation={createNewConversation}
+              title="I am a professional AI, I can do a lot of things. Whatever you need, I am willing to help you! This is so long conversation title."
+            />
           </ul>
         </div>
       </div>
