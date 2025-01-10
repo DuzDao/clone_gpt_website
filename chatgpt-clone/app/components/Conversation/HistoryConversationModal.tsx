@@ -26,7 +26,7 @@ const HistoryConversationModal = ({
   }
 
   return (
-    <div className="history-conversation-modal fixed top-0 left-0 p-2 pt-4 bg-zinc-50 outline outline-1 outline-slate-300 max-w-xl min-w-72 h-screen flex flex-col">
+    <div className="history-conversation-modal fixed top-0 left-0 p-2 pt-4 bg-zinc-50 outline outline-1 outline-slate-300 w-72 h-screen flex flex-col">
       {/* Modal Header */}
       <div className="modal-header flex flex-row justify-between ">
         <button
@@ -45,7 +45,7 @@ const HistoryConversationModal = ({
         </div>
       </div>
       {/* Modal Body */}
-      <div className="modal-body mt-5 flex flex-col items-start flex-grow overflow-auto">
+      <div className="modal-body w-full mt-5 flex flex-col items-start flex-grow overflow-auto">
         <button className="flex w-full gap-3 hover:bg-slate-200 rounded-xl px-3 py-2">
           <div className="outline outline-1 rounded-full p-0.5 outline-slate-300 bg-white">
             <Image src={chatgptIcon} alt="" className="h-5 w-5"></Image>
@@ -60,10 +60,10 @@ const HistoryConversationModal = ({
         </button>
 
         {/* Danh sách button các conversation */}
-        <ul className="mt-4">
+        <ul className="mt-4 w-full">
           {conversations.map((conversation) => {
             return (
-              <li>
+              <li key={conversation.id} className="w-full">
                 <ConversationItemButton
                   title={conversation.title}
                   conversationId={conversation.id}
@@ -74,7 +74,7 @@ const HistoryConversationModal = ({
         </ul>
       </div>
       {/* Modal Footer */}
-      <div className="modal-footer">
+      <div className="modal-footer mt-2">
         <button className="flex flex-row items-center gap-2 hover:bg-slate-200 w-full px-3 py-2 rounded-xl">
           <div className="outline outline-1 rounded-full p-1 outline-slate-300">
             <Image src={sidebarUpgrade} alt="" className="p-0.5" />
